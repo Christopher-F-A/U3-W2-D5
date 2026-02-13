@@ -16,7 +16,7 @@ function HomePage() {
 
   return (
     <Container className="d-flex align-items-center justify-content-center vh-100">
-      <Card className="circle-card border-0 shadow-lg">
+      <Card className="circle-card border-0">
         <Card.Body className="d-flex flex-column justify-content-center align-items-center w-100">
           <h2 className="text-center mb-4 fw-bold text-white">WEATHER</h2>
 
