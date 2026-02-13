@@ -28,6 +28,9 @@ function WeatherPage() {
         const forecastData = await forecastRes.json();
         setCurrentWeather(currentData);
 
+        const dailyForecast = forecastData.list.filter((f) => f.dt_txt.includes("12:00:00"));
+        setForecast(dailyForecast);
+
         // orario esatto in cui i dati sono stati ricevuti
         const now = new Date();
         const timeString = now.toLocaleTimeString("en-US", {
@@ -80,13 +83,48 @@ function WeatherPage() {
               <img src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@4x.png`} alt="weather icon" />
               <h2 className="display-2 fw-bold">{Math.round(currentWeather.main.temp)}°C</h2>
               <h3 className="text-capitalize mb-4">{currentWeather.weather[0].description}</h3>
+              <Row className="border-top pt-3">
+                <Col>
+                  <p className="mb-0 small">Humidity</p>
+                  <p className="fw-bold">{currentWeather.main.humidity}%</p>
+                </Col>
+                <Col>
+                  <p className="mb-0 small">Wind</p>
+                  <p className="fw-bold">{currentWeather.wind.speed} m/s</p>
+                </Col>
+                <Col>
+                  <p className="mb-0 small">Will it rain?</p>
+                  <p className="fw-bold">{currentWeather.clouds.all > 70 ? "Likely" : "Not likely"}</p>
+                </Col>
+              </Row>
             </Card.Body>
           </Card>
         </Col>
       </Row>
 
+      {/* PREVISIONI 5 GIORNI */}
+      <h4 className="text-center text-white mb-4 text-uppercase fw-light" style={{ letterSpacing: "3px" }}>
+        Next days
+      </h4>
+      <Row className="g-3 justify-content-center">
+        {forecast.map((day, index) => (
+          <Col key={index} xs={6} md={2}>
+            <Card className="glass-card border-0 text-center text-white h-100 p-2">
+              <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+                <p className="small mb-0">{new Date(day.dt_txt).toLocaleDateString("gb-GB", { weekday: "short" })}</p>
+                <img src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`} alt="icon" />
+                <p className="fw-bold mb-0">{Math.round(day.main.temp)}°C</p>
+                <p className="x-small text-capitalize" style={{ fontSize: "0.7rem" }}>
+                  {day.weather[0].description}
+                </p>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+
       <div className="text-center mt-5">
-        <Link to="/" className="btn btn-circle">
+        <Link to="/" className="btn btn-circle" style={{ textDecoration: "none", color: "white" }}>
           ←
         </Link>
       </div>
