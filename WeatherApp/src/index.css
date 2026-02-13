@@ -9,12 +9,11 @@ body,
 body {
   background: linear-gradient(
     180deg,
-    #ff9a9e 0%,
-    /* Alba */ #fad0c4 10%,
-    #4facfe 30%,
+    #09203f 15%,
+    /* Alba */ #4facfe 30%,
     /* Giorno */ #00f2fe 50%,
     #fa709a 70%,
-    /* Tramonto */ #fee140 85%,
+    /* Tramonto */ #ff6123 85%,
     #09203f 100% /* Notte */
   );
 
@@ -102,4 +101,16 @@ body {
   background: rgba(255, 255, 255, 0.3) !important;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
   outline: none;
+}
+
+.glass-card {
+  background: rgba(252, 4, 4, 0.3) !important; /* Stesso tono rosso della home */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 25px !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+.x-small {
+  font-size: 0.8rem;
 }
