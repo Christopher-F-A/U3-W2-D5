@@ -1,0 +1,12 @@
+html,
+body,
+#root {
+  height: 100%; /* Questo è fondamentale per far funzionare vh-100 */
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}

@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import WeatherPage from "./pages/WeatherPage.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
