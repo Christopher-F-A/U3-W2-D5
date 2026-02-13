@@ -10,3 +10,5 @@ function WeatherPage() {
 
   const API_KEY = "9c5b4559e8af3e34a94ce15030fa459d";
 }
+
+export default WeatherPage;

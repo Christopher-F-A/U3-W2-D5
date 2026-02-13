@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import { Container, Form, Button, Card } from "react-bootstrap";
 
 function HomePage() {
   const [city, setCity] = useState("");
@@ -15,29 +15,38 @@ function HomePage() {
   };
 
   return (
-    <Container className="mt-5 vh-100">
-      <Row className="justify-content-center">
-        <Col xs={12} md={6}>
-          <Card className="shadow-lg border-0 p-3">
-            <Card.Body>
-              <h1 className="text-center mb-4">WEATHER FORECAST</h1>
-              <Form onSubmit={handleSearch}>
-                <Form.Group className="mb-3">
-                  <Form.Label>City</Form.Label>
-                  <Form.Control placeholder="Es: Verona" value={city} onChange={(e) => setCity(e.target.value)} required />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Nation</Form.Label>
-                  <Form.Control placeholder="Es: IT" value={country} onChange={(e) => setCountry(e.target.value)} required />
-                </Form.Group>
-                <Button variant="primary" type="submit" className="w-100">
-                  WILL IT RAIN?
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+    <Container className="d-flex align-items-center justify-content-center vh-100">
+      <Card className="circle-card border-0 shadow-lg">
+        <Card.Body className="d-flex flex-column justify-content-center align-items-center w-100">
+          <h2 className="text-center mb-4 fw-bold text-white">WEATHER</h2>
+
+          <Form onSubmit={handleSearch} className="w-100">
+            <Form.Group className="mb-3">
+              <Form.Control
+                className="glass-input rounded-pill text-center"
+                placeholder="City (es: Verona)"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-4">
+              <Form.Control
+                className="glass-input rounded-pill text-center"
+                placeholder="Nation (es: IT)"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Button type="submit" className="btn-circle">
+              GO
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
     </Container>
   );
 }

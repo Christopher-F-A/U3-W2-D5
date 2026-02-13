@@ -1,12 +1,105 @@
 html,
 body,
 #root {
-  height: 100%; /* Questo è fondamentale per far funzionare vh-100 */
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
+body {
+  background: linear-gradient(
+    180deg,
+    #ff9a9e 0%,
+    /* Alba */ #fad0c4 10%,
+    #4facfe 30%,
+    /* Giorno */ #00f2fe 50%,
+    #fa709a 70%,
+    /* Tramonto */ #fee140 85%,
+    #09203f 100% /* Notte */
+  );
+
+  /* sfondo più alto */
+  background-size: 100% 1000%;
+  animation: smoothDaylight 30s ease-in-out infinite alternate;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #212529;
+}
+
+@keyframes smoothDaylight {
+  0% {
+    background-position: 0% 0%; /* Inizia dall'Alba */
+  }
+  50% {
+    background-position: 0% 50%; /* Passa al Giorno pieno */
+  }
+  100% {
+    background-position: 0% 100%; /* Arriva al Tramonto/Notte */
+  }
+}
+
+.circle-card {
+  aspect-ratio: 1 / 1;
+  width: 450px;
+  height: 450px;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 50px !important;
+  flex-shrink: 0;
+  overflow: hidden;
+  overflow: hidden;
+  padding: 40px !important;
+  background: rgba(252, 4, 4, 0.457) !important;
+  box-shadow: 0 8px 32px 0 rgb(255, 0, 0) !important;
+}
+
+@media (max-width: 500px) {
+  .circle-card {
+    width: 320px;
+    height: 320px;
+    padding: 30px !important;
+  }
+}
+.circle-card h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: rgba(221, 21, 21, 0.514);
+}
+
+.btn-circle {
+  background-color: rgba(252, 4, 4, 0.457) !important;
+  width: 60px;
+  height: 60px;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid rgba(255, 0, 0, 0.083) !important;
+  box-shadow: 0 4px 15px rgb(255, 0, 0);
+  transition: transform 0.2s ease;
+}
+
+.btn-circle:hover {
+  transform: scale(1.1);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #fff !important;
+  backdrop-filter: blur(5px);
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
+  outline: none;
 }
